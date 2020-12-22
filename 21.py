@@ -44,17 +44,5 @@ ident = set()
 for k, v in allergs.items():
     for vv in v: ident.add(vv)
 
-ans = 0
-for k,v in ingreds.items():
-    if k not in ident:
-        ans += v
-
-print(ans)
-
-#Part 2
-ans = ''
-sortedK = sorted(allergs.keys())
-for k in sortedK:
-    ans += ''.join(allergs[k]) + ','
-
-print(ans[:-1])
+print(sum(ingreds[k] for k in ingreds.keys() if k not in ident))
+print(','.join(allergs[x][0] for x in sorted(allergs.keys())))
